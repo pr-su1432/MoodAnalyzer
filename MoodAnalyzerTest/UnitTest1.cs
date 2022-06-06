@@ -2,14 +2,14 @@ namespace MoodAnalyzerTest
 {
     public class Tests
     {
-        private string message;
+  
 
         [Test]
         public void GivenMood_AnalyzeMood_ReturnMoodSad()
         {
             string message = "I am in Sad mood";
             Moodanalyzer.AnalyzeMood mood = new Moodanalyzer.AnalyzeMood(message);
-            string actualResult = mood.getMoodanalyze("I am in Sad mood");
+            string actualResult = mood.getMoodanalyze();
             Assert.AreEqual("Sad", actualResult);
            
         }
@@ -18,7 +18,7 @@ namespace MoodAnalyzerTest
         {
             string message = "I am in Happy Mood";
             Moodanalyzer.AnalyzeMood mood = new Moodanalyzer.AnalyzeMood(message);
-            string actualResult = mood.getMoodanalyze("I am in Any mood");
+            string actualResult = mood.getMoodanalyze();
             Assert.AreEqual("Happy", actualResult);
         }
     }
