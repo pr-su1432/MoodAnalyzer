@@ -14,7 +14,7 @@ namespace Moodanalyzer
         {
             this.message = message;
         }
-        public string getMoodanalyze(string v)
+        public string getMoodanalyze()
         {
             if (this.message.Contains("Sad"))
                 return "Sad";
