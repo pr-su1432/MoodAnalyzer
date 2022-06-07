@@ -29,5 +29,19 @@ namespace MoodAnalyzerTest
             string actualResult = mood.getMoodanalyze();
             Assert.AreEqual("Happy", actualResult);
         }
+        [Test]
+        public void GivenEmpty_AnalyzeMood_EmptyException_ReturnEmptyMood()
+        {
+            try
+            {
+                string message = "";
+                Moodanalyzer.AnalyzeMood mood = new Moodanalyzer.AnalyzeMood(message);
+                string actualResult = mood.getMoodanalyze();
+            }
+            catch (Moodanalyzer.AnalyzerException exe)
+            {
+                Assert.AreEqual("Mood can not be Empty", exe.Message);
+            }
+        }
     }
 }

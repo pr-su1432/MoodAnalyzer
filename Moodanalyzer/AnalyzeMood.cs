@@ -6,30 +6,24 @@ using System.Threading.Tasks;
 
 namespace Moodanalyzer
 {
-
     public class AnalyzeMood
     {
-        private string mood;
-        public AnalyzeMood(string message)
+       private string mood;
+        public AnalyzeMood(string mood)
         {
-            this.mood = message;
+            this.mood = mood;
         }
         public string getMoodanalyze()
         {
-            try
+            if (this.mood.Contains("Sad"))
             {
-                if (this.mood.Contains("Sad"))
-                    return "Sad";
-                else
-                    return "Happy";
+
+                return "Sad";
             }
-            catch (NullReferenceException)
-            {
+            else
+            { 
                 return "Happy";
             }
         }
     }
 }
-
-
-
