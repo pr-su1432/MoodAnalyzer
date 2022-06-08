@@ -1,13 +1,18 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace Moodanalyzer
 {
-    [Serializable]
-    internal class AnalyzerException : Exception
+   
+    public class AnalyzerException : Exception
     {
         public enum ExceptionType
         {
-            NULL_MESSAGE, EMPTY_MESSAGE
+            NULL_MESSAGE, EMPTY_MESSAGE, NO_SUCH_METHOD, NO_SUCH_CLASS,
         }
         public ExceptionType Type;
         public AnalyzerException(ExceptionType type, string message) : base(message)
