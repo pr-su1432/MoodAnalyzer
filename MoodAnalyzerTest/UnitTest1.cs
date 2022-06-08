@@ -165,6 +165,19 @@ namespace MoodAnalyzerTest
                 Assert.AreEqual("Field Not Found", exe.Message);
             }
         }
+        [Test]
+        public void GivenInvalidMoodException()
+        {
+            try
+            {
+                object result = Moodanalyzer.AnalyzerFactory.SetField("null", "mood");
+                Assert.AreEqual("null", result);
+            }
+            catch (Exception exp)
+            {
+                Assert.AreEqual("Mood Should not be null", exp.Message);
+            }
+        }
 
 
     }
