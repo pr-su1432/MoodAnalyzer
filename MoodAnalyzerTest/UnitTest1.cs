@@ -4,7 +4,7 @@ namespace MoodAnalyzerTest
 {
     public class Tests
     {
-       
+        
 
         [Test]
         public void GivenMood_AnalyzeMood_ReturnMoodSad()
@@ -55,6 +55,37 @@ namespace MoodAnalyzerTest
             object obj = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyzeMood", "AnalyzeMood");
             expected.Equals(obj);
 
+        }
+        [Test]
+       
+        public void GivenMoodAnalyseClassName_ShouldreturnClassNotFound()
+        {
+            try
+            {
+                string message = null;
+                object expected = new AnalyzeMood(message);
+                object actual = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyeMood", "AnalyzeMood");
+                expected.Equals(actual);
+            }
+            catch (Moodanalyzer.AnalyzerException ex)
+            {
+                Assert.AreEqual("Class not found", ex.Message);
+            }
+        }
+        [Test]
+        public void GivenMoodAnalyseClassName_ShouldreturnConstructorNotFound()
+        {
+            try
+            {
+                string message = null;
+                object expected = new AnalyzeMood(message);
+                object actual = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyzeMood", "AnalyzeMod");
+                expected.Equals(actual);
+            }
+            catch (Moodanalyzer.AnalyzerException exp)
+            {
+                Assert.AreEqual("Constructor is not found", exp.Message);
+            }
         }
     }
 }

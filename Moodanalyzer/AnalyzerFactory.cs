@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace Moodanalyzer
 {
-    public class AnalyzerFactory
+    public class AnalyzerFactory 
     {
+      
+
         public static object MoodAnalyzer(string ClassName,string ConstructorName)
         {
-            string pattern = @"." + ConstructorName + "$";
+            string pattern =  @"." + ConstructorName + "$";
             Match result = Regex.Match(ClassName, pattern);
 
             if (result.Success)
@@ -20,8 +22,8 @@ namespace Moodanalyzer
                 try
                 {
                     Assembly executing = Assembly.GetExecutingAssembly();
-                    Type moodAnalyseType = executing.GetType(ClassName);
-                    return Activator.CreateInstance(moodAnalyseType);
+                    Type AnalyzeMoodType = executing.GetType(ClassName);
+                    return Activator.CreateInstance(AnalyzeMoodType);
                 }
                 catch (ArgumentNullException)
                 {
@@ -30,8 +32,9 @@ namespace Moodanalyzer
             }
             else
             {
-                throw new AnalyzerException(AnalyzerException.ExceptionType.NO_SUCH_CLASS, "Constructor is not found");
+                throw new AnalyzerException(AnalyzerException.ExceptionType.NO_SUCH_METHOD, "Constructor is not found");
             }
         }
+        
     }
 }

@@ -10,10 +10,12 @@ namespace Moodanalyzer
     {
 
         public string mood;
+
         public AnalyzeMood()
         {
 
         }
+
         public AnalyzeMood(string mood)
         {
             this.mood = mood;
