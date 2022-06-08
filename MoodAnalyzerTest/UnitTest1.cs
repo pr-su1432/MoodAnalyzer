@@ -1,3 +1,5 @@
+using Moodanalyzer;
+
 namespace MoodAnalyzerTest
 {
     public class Tests
@@ -42,6 +44,17 @@ namespace MoodAnalyzerTest
             {
                 Assert.AreEqual("Mood can not be Empty", exe.Message);
             }
+
+        }
+        [Test]
+        public void GivenMoodAnalyzeClassName_MoodClassName_ReturnClassnameObject()
+        {
+            object expected = new AnalyzeMood();
+           
+    
+            object obj = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyzeMood", "AnalyzeMood");
+            expected.Equals(obj);
+
         }
     }
 }

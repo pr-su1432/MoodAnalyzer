@@ -1,3 +1,2 @@
-﻿
-Console.WriteLine("mood analyzer");
+﻿Console.WriteLine("mood analyzer");
 

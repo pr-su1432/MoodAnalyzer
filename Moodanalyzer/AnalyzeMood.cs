@@ -8,8 +8,12 @@ namespace Moodanalyzer
 {
     public class AnalyzeMood
     {
-       
+
         public string mood;
+        public AnalyzeMood()
+        {
+
+        }
         public AnalyzeMood(string mood)
         {
             this.mood = mood;
