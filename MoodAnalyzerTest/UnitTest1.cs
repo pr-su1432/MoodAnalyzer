@@ -146,5 +146,12 @@ namespace MoodAnalyzerTest
             }
 
         }
+        [Test]
+        public void GivenHappyMoodDynamivRefactorReturnHappy()
+        {
+            object result = Moodanalyzer.AnalyzerFactory.SetField("Happy", "mood");
+            Assert.AreEqual("Happy", result);
+        }
+
     }
 }
