@@ -4,7 +4,7 @@ namespace MoodAnalyzerTest
 {
     public class Tests
     {
-        
+
 
         [Test]
         public void GivenMood_AnalyzeMood_ReturnMoodSad()
@@ -13,7 +13,7 @@ namespace MoodAnalyzerTest
             Moodanalyzer.AnalyzeMood mood = new Moodanalyzer.AnalyzeMood(message);
             string actualResult = mood.getMoodanalyze();
             Assert.AreEqual("Sad", actualResult);
-           
+
         }
         [Test]
         public void GivenMoodAny_AnalyzeMood_ReturnHappyMood()
@@ -50,21 +50,21 @@ namespace MoodAnalyzerTest
         public void GivenMoodAnalyzeClassName_MoodClassName_ReturnClassnameObject()
         {
             object expected = new AnalyzeMood();
-           
-    
+
+
             object obj = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyzeMood", "AnalyzeMood");
             expected.Equals(obj);
 
         }
         [Test]
-       
-        public void GivenMoodAnalyseClassName_ShouldreturnClassNotFound()
+
+        public void GivenMoodAnalyseClassName_MoodClassName_ReturnClassNotFound()
         {
             try
             {
                 string message = null;
                 object expected = new AnalyzeMood(message);
-                object actual = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyeMood", "AnalyzeMood");
+                object actual = AnalyzerFactory.MoodAnalyzer("Moodanalyzer.AnalyzeMood", "Moodanalyzer.AnalyzeMood");
                 expected.Equals(actual);
             }
             catch (Moodanalyzer.AnalyzerException ex)
@@ -93,6 +93,36 @@ namespace MoodAnalyzerTest
             object expexted = new AnalyzeMood("HAPPY");
             object value = AnalyzerFactory.createMoodAnalyzerParameter("Moodanalyzer.AnalyzeMood", "AnalyzeMood", "HAPPY");
             expexted.Equals(value);
+        }
+        [Test]
+        public void GivenInvalidClassNameAndValidPerameterizedConstructor_ReturnNoSuchConstructor()
+        {
+            try
+            {
+                object expected = new Moodanalyzer.AnalyzeMood("HAPPY");
+                object actual = Moodanalyzer.AnalyzerFactory.createMoodAnalyzerParameter("AnalyzeMood", "AnalyzeMd", "HAPPY");
+                expected.Equals(actual);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Constructor is not found", e.Message);
+            }
+
+        }
+        [Test]
+        public void GivenInvalidPerameterizedConstructor_ReturnClassNotFound()
+        {
+            try
+            {
+                object expected = new Moodanalyzer.AnalyzeMood("HAPPY");
+                object actual = Moodanalyzer.AnalyzerFactory.createMoodAnalyzerParameter("AnaMood", "AnalyzeMood", "HAPPY");
+                expected.Equals(actual);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Class not found", e.Message);
+            }
+
         }
     }
 }
