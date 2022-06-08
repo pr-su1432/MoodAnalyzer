@@ -124,5 +124,27 @@ namespace MoodAnalyzerTest
             }
 
         }
+        [Test]
+        public void GivenHappyIsInput_ShouldReturnHappy_UsinReflection()
+        {
+            object expected = "Happy";
+            object actual = Moodanalyzer.AnalyzerFactory.InvokeMoodAnalyser("Happy", "getMoodanalyze");
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void GivenImproperMethodName_NoSuchMethodException_UsingReflector()
+        {
+            try
+            {
+                object expected = "HAPPY";
+                object actual = Moodanalyzer.AnalyzerFactory.InvokeMoodAnalyser("HAPPY", "getMoodanalyze");
+                expected.Equals(actual);
+            }
+            catch (Moodanalyzer.AnalyzerException exe)
+            {
+                Assert.AreEqual("Constructor is not found", exe.Message);
+            }
+
+        }
     }
 }
