@@ -152,6 +152,20 @@ namespace MoodAnalyzerTest
             object result = Moodanalyzer.AnalyzerFactory.SetField("Happy", "mood");
             Assert.AreEqual("Happy", result);
         }
+        [Test]
+        public void GivenHappyMoodAndInvalidFielsException()
+        {
+            try
+            {
+                object result = Moodanalyzer.AnalyzerFactory.SetField("Happy", "testMood");
+                Assert.AreEqual("Happy", result);
+            }
+            catch (Exception exe)
+            {
+                Assert.AreEqual("Field Not Found", exe.Message);
+            }
+        }
+
 
     }
 }
